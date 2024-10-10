@@ -6,7 +6,7 @@ namespace LibraryManagementSystem.Models
     {
         public int LogId { get; set; }
 
-        public int? UserId { get; set; } // Nullable for system actions
+        public string? UserId { get; set; } // Nullable for system actions
         public virtual User User { get; set; }
 
         [Required]

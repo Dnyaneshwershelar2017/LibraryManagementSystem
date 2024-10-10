@@ -10,10 +10,10 @@ namespace LibraryManagementSystem.Models
         public string Title { get; set; }
 
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public  Category Category { get; set; }
 
         public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
+        public  Author Author { get; set; }
 
         [Required]
         public string ISBN { get; set; }
@@ -27,9 +27,9 @@ namespace LibraryManagementSystem.Models
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
-        public virtual ICollection<BookRequest> BookRequests { get; set; }
-        public virtual ICollection<IssuedBook> IssuedBooks { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public  ICollection<BookRequest> BookRequests { get; set; }
+        public  ICollection<IssuedBook> IssuedBooks { get; set; }
+        public  ICollection<Transaction> Transactions { get; set; }
     }
 
 }

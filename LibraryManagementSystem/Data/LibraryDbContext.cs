@@ -1,9 +1,11 @@
 ﻿using LibraryManagementSystem.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.Data
 {
-    public class LibraryDbContext : DbContext
+    //Indentity
+    public class LibraryDbContext : IdentityDbContext<User>
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -87,9 +89,12 @@ namespace LibraryManagementSystem.Data
 
             // Seed data example (optional)
             modelBuilder.Entity<User>().HasData(
-                new User { UserId = 1, Username = "admin", Email = "admin@example.com", Role = UserRole.Admin, PasswordHash = "hashedpassword" },
-                new User { UserId = 2, Username = "student1", Email = "student1@example.com", Role = UserRole.Student, PasswordHash = "hashedpassword" }
+                new User {Id = "1", UserName = "admin", Email = "admin@example.com", Role = UserRole.Admin, PasswordHash = "hashedpassword" },
+                new User {Id = "2", UserName = "student1", Email = "student1@example.com", Role = UserRole.Student, PasswordHash = "hashedpassword" }
             );
+
+            //Indentity
+            base.OnModelCreating(modelBuilder);
         }
     }
 

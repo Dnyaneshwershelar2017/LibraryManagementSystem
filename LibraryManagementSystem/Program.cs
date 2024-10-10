@@ -1,11 +1,21 @@
 using LibraryManagementSystem.Data;
+using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+//Indentity
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<LibraryDbContext>()
+    .AddDefaultTokenProviders();
+
+
 
 
 builder.Services.AddDbContext<LibraryDbContext>(options =>
