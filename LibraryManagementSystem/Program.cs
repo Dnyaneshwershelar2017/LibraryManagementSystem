@@ -19,8 +19,9 @@ options.UseSqlServer(
 ));
 // Configure Data Protection
 builder.Services.AddDataProtection()
-    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DataProtection-Keys")))
+    .PersistKeysToFileSystem(new DirectoryInfo("/app/DataProtection-Keys"))
     .SetApplicationName("LibraryManagementSystem");
+
 
 var app = builder.Build();
 
