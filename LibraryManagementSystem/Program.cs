@@ -1,4 +1,5 @@
 using LibraryManagementSystem.Data;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,10 @@ options.UseSqlServer(
             errorNumbersToAdd: null  // Optional: add specific SQL error numbers to retry
         )
 ));
+// Configure Data Protection
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DataProtection-Keys")))
+    .SetApplicationName("LibraryManagementSystem");
 
 var app = builder.Build();
 
